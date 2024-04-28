@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
+import { BaseLayout } from './layouts';
 
 // NOTE: _app.tsx, 404.tsx
 const DEFAULT_MODULES: Record<string, { [key: string]: any }> =
@@ -31,15 +33,22 @@ export const Router = () => {
   const NotFound = defaultRoutes?.['404'] || Fragment;
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<App />}>
-          {components.map(({ path, component: Component = Fragment }) => (
-            <Route index key={path} path={path} element={<Component />} />
-          ))}
-          <Route path="*" element={NotFound} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route element={<App />}>
+        {components.map(({ path, component: Component = Fragment }) => (
+          <Route
+            index
+            key={path}
+            path={path}
+            element={
+              <BaseLayout>
+                <Component />
+              </BaseLayout>
+            }
+          />
+        ))}
+        <Route path="*" element={NotFound} />
+      </Route>
+    </Routes>
   );
 };
