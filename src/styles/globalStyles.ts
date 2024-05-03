@@ -62,6 +62,9 @@ const globalStyles = () => css`
       cursor: not-allowed;
     }
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default globalStyles;
