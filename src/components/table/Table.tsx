@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Pagination } from '@/components';
 import * as S from './Table.styled';
 
 interface Props {
@@ -14,6 +15,10 @@ interface TableProps<T> extends Props {
 
 interface RowButtonProps {
   onClick: () => void;
+}
+
+interface TablePaginationProps {
+  totalPages: number;
 }
 
 const Table = <T extends object>({
@@ -58,14 +63,13 @@ Table.Foot = ({ className, children }: Props) => (
 );
 
 Table.TotalCount = () => (
-  // TODO: 페이지네이션 컴포넌트 적용 후 수정 예정
+  // TODO: API 연동 시 수정 예정
   <S.TotalCountData>전체 100 중 1-10 보기</S.TotalCountData>
 );
 
-Table.Pagination = () => (
+Table.Pagination = ({ totalPages }: TablePaginationProps) => (
   <td>
-    {/* TODO: 페이지네이션 컴포넌트 적용 예정 */}
-    페이지네이션
+    <Pagination totalPages={totalPages} />
   </td>
 );
 
