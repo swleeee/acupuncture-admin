@@ -30,6 +30,7 @@ const globalStyles = () => css`
     font-size: 62.5%;
   }
   body {
+    overflow-x: hidden;
     overflow-y: overlay;
   }
 
