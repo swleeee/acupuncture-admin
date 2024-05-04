@@ -1,89 +1,61 @@
 import { css } from '@emotion/react';
 
+const LINE_HEIGHT = {
+  '12': 1.5,
+  '14': 1.42857,
+  '16': 1.5,
+  '18': 1,
+  '40': 1.2,
+} as const;
+
 export const font = {
   regular_12: css`
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 400;
-    font-family: Pretendard;
-    line-height: 1.33333;
-  `,
-  regular_13: css`
-    font-size: 1.3rem;
-    font-weight: 400;
-    font-family: Pretendard;
-    line-height: 1.53846;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[12]};
   `,
   regular_14: css`
     font-size: 1.4rem;
     font-weight: 400;
-    font-family: Pretendard;
-    line-height: 1.57142;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[14]};
   `,
-  regular_15: css`
-    font-size: 1.5rem;
+  regular_16: css`
+    font-size: 1.6rem;
     font-weight: 400;
-    font-family: Pretendard;
-    line-height: 1.6;
-  `,
-  medium_12: css`
-    font-size: 1.2rem;
-    font-weight: 500;
-    font-family: Pretendard;
-    line-height: 1.33333;
-  `,
-  medium_13: css`
-    font-size: 1.3rem;
-    font-weight: 500;
-    font-family: Pretendard;
-    line-height: 1.53846;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[16]};
   `,
   medium_14: css`
     font-size: 1.4rem;
     font-weight: 500;
-    font-family: Pretendard;
-    line-height: 1.57142;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[14]};
   `,
-  medium_15: css`
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-family: Pretendard;
-    line-height: 1.6;
+  semibold_14: css`
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[14]};
   `,
-  medium_16: css`
-    font-size: 1.6rem;
-    font-weight: 500;
-    font-family: Pretendard;
-    line-height: 1.625;
-  `,
-  medium_18: css`
+  semibold_18: css`
     font-size: 1.8rem;
-    font-weight: 500;
-    font-family: Pretendard;
-    line-height: 1.66666;
+    font-weight: 600;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[18]};
   `,
   bold_14: css`
     font-size: 1.4rem;
-    font-weight: 600;
-    font-family: Pretendard;
-    line-height: 1.57142;
+    font-weight: 700;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[14]};
   `,
-  bold_16: css`
-    font-size: 1.6rem;
-    font-weight: 600;
-    font-family: Pretendard;
-    line-height: 1.625;
-  `,
-  bold_18: css`
-    font-size: 1.8rem;
-    font-weight: 600;
-    font-family: Pretendard;
-    line-height: 1.66666;
-  `,
-  bold_24: css`
-    font-size: 2.4rem;
-    font-weight: 600;
-    font-family: Pretendard;
-    line-height: 1.66666;
+  heavy_40: css`
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[40]};
   `,
 } as const;
 

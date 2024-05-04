@@ -1,6 +1,9 @@
 import emotionReset from 'emotion-reset';
 import { css } from '@emotion/react';
 
+import { theme } from './theme';
+import './font.css';
+
 const globalStyles = () => css`
   ${emotionReset};
 
@@ -27,6 +30,7 @@ const globalStyles = () => css`
     font-size: 62.5%;
   }
   body {
+    overflow-x: hidden;
     overflow-y: overlay;
   }
 
@@ -46,6 +50,18 @@ const globalStyles = () => css`
     outline: 0;
   }
 
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+
+    &::placeholder {
+      ${theme.font.regular_14}
+      color: ${theme.color.gray_500}
+    }
+  }
+
   li,
   ol,
   ul {
@@ -59,6 +75,9 @@ const globalStyles = () => css`
     &:disabled {
       cursor: not-allowed;
     }
+  }
+  a {
+    text-decoration: none;
   }
 `;
 
