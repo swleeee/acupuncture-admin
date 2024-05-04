@@ -30,9 +30,15 @@ export const TableHeadRow = styled.tr`
   `}
 `;
 
-export const TableHeadCell = styled.th`
-  ${({ theme }) => css`
+const getCheckboxStyle = css`
+  display: flex;
+  column-gap: 8px;
+`;
+
+export const TableHeadCell = styled.th<{ hasCheckbox: boolean }>`
+  ${({ theme, hasCheckbox }) => css`
     ${theme.font.medium_14};
+    ${hasCheckbox && getCheckboxStyle}
     padding: 18px 22px;
     color: ${theme.color.gray_900};
     overflow: hidden;
@@ -56,11 +62,12 @@ export const TableBodyRow = styled.tr`
   `}
 `;
 
-export const TableData = styled.td`
-  ${({ theme }) => css`
+export const TableData = styled.td<{ hasCheckbox: boolean }>`
+  ${({ theme, hasCheckbox }) => css`
     ${theme.font.medium_14};
     display: flex;
     align-items: center;
+    column-gap: ${hasCheckbox && '8px'};
     height: 80px;
     padding: 0 22px;
   `}

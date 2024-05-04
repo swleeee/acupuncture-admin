@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pagination } from '@/components';
+import { Checkbox, Pagination } from '@/components';
 import * as S from './Table.styled';
 
 interface Props {
@@ -9,8 +9,14 @@ interface Props {
 }
 
 interface TableProps<T> extends Props {
+  isCheckedAll?: boolean;
+  onSelectAll?: () => void;
   captionContent: string;
   headers: T;
+}
+
+interface TableDataProps extends Props {
+  hasCheckbox?: boolean;
 }
 
 interface RowButtonProps {
@@ -24,15 +30,24 @@ interface TablePaginationProps {
 const Table = <T extends object>({
   className,
   children,
+  isCheckedAll = false,
   captionContent,
   headers,
+  onSelectAll,
 }: TableProps<T>) => (
   <S.Table className={className}>
     <caption>{captionContent}</caption>
     <thead>
       <S.TableHeadRow>
-        {Object.values(headers).map((header) => (
-          <S.TableHeadCell key={header} scope="col">
+        {Object.values(headers).map((header, i) => (
+          <S.TableHeadCell
+            key={header}
+            hasCheckbox={!!onSelectAll && i === 0}
+            scope="col"
+          >
+            {i === 0 && !!onSelectAll && (
+              <Checkbox isChecked={isCheckedAll} onAllSelect={onSelectAll} />
+            )}
             {header}
           </S.TableHeadCell>
         ))}
@@ -48,15 +63,17 @@ Table.BodyRow = ({ className, children }: Props) => (
   <S.TableBodyRow className={className}>{children}</S.TableBodyRow>
 );
 
-Table.Data = ({ className, children }: Props) => (
-  <S.TableData className={className}>{children}</S.TableData>
+Table.Data = ({ className, children, hasCheckbox = false }: TableDataProps) => (
+  <S.TableData className={className} hasCheckbox={hasCheckbox}>
+    {children}
+  </S.TableData>
 );
 
 Table.RowButton = ({ onClick }: RowButtonProps) => (
   <S.TableRowButton type="button" onClick={onClick} />
 );
 
-Table.Foot = ({ className, children }: Props) => (
+Table.Foot = ({ children }: Props) => (
   <S.TableFoot>
     <S.TableFootRow>{children}</S.TableFootRow>
   </S.TableFoot>
