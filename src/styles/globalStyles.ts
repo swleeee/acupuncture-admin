@@ -1,6 +1,7 @@
 import emotionReset from 'emotion-reset';
 import { css } from '@emotion/react';
 
+import { theme } from './theme';
 import './font.css';
 
 const globalStyles = () => css`
@@ -46,6 +47,13 @@ const globalStyles = () => css`
   input,
   textarea {
     outline: 0;
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
   }
 
   li,
