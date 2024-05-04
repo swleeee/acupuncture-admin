@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { UserList } from '@/containers';
+
 const index = () => {
-  return <div>user</div>;
+  return <UserList />;
 };
 
 export default index;

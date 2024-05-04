@@ -55,6 +55,11 @@ const globalStyles = () => css`
     -moz-appearance: none;
     appearance: none;
     border: 0;
+
+    &::placeholder {
+      ${theme.font.regular_14}
+      color: ${theme.color.gray_500}
+    }
   }
 
   li,
