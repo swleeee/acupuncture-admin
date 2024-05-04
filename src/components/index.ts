@@ -2,6 +2,7 @@ export * from './button';
 export * from './input';
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs';
 export { default as Checkbox } from './checkbox/Checkbox';
+export { default as Dropdown } from './dropdown/Dropdown';
 export { default as Footer } from './footer/Footer';
 export { default as Header } from './header/Header';
 export { default as LabelContent } from './labelContent/LabelContent';
