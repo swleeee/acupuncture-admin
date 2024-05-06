@@ -4,6 +4,7 @@ export const color = {
   bg: '#F9FAFE',
   gray_50: '#F5F7FA',
   gray_100: '#E9EAF0',
+  gray_200: '#CED1D9',
   gray_300: '#84849D',
   gray_400: '#A1A5B3',
   gray_500: '#8C94A3',
