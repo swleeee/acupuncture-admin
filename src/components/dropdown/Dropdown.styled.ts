@@ -48,6 +48,7 @@ export const DropdownOptionWrapper = styled.ul`
     border: 1px solid ${theme.color.gray_300};
     border-radius: 8px;
     background-color: ${theme.color.white};
+    z-index: ${theme.zIndex.DROPDOWN};
   `}
 `;
 
