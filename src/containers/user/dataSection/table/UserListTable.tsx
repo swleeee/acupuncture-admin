@@ -113,13 +113,6 @@ const UserListTable = () => {
             </S.ControlButton>
             <S.ControlButton
               type="button"
-              aria-label="유저 정보 상세조회"
-              onClick={() => console.log('조회: ', item.id)}
-            >
-              <EyeIcon />
-            </S.ControlButton>
-            <S.ControlButton
-              type="button"
               aria-label="유저 정보 삭제"
               onClick={() => console.log('삭제: ', item.id)}
             >
