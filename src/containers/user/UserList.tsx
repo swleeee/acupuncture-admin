@@ -8,6 +8,7 @@ import UserDataSection from './dataSection/UserDataSection';
 import * as S from './UserList.styled';
 
 const UserList = () => {
+  console.log('D');
   return (
     <S.UserList>
       <S.Outline>
