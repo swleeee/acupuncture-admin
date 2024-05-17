@@ -79,15 +79,12 @@ const globalStyles = () => css`
   a {
     text-decoration: none;
   }
-<<<<<<< HEAD
-=======
 
   textarea {
     ${theme.style.HORIZONTAL_SCROLL_BAR}
     resize: none;
     outline: 0;
   }
->>>>>>> upstream/v1.0.0
 `;
 
 export default globalStyles;
