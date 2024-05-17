@@ -55,8 +55,6 @@ const UserListTable = () => {
       return;
     }
     setCheckIds([...checkedIds].filter((checkId) => checkId !== id));
-
-    console.log(id, isChecked);
   };
 
   const handleUserIdAllCheck = () => {
@@ -67,16 +65,6 @@ const UserListTable = () => {
 
     setCheckIds([]);
   };
-
-  // const checkGroupList = () => {
-  //  return Object.values(checkedIds).every((isChecked) => isChecked);
-  // }
-
-  // const handleAllChecksToggle = () => {
-  //   const isAllCheck = checkGroupList();
-
-  //   // toggleAllChecks(!isAllCheck);
-  // };
 
   const formatData = (
     item: GetUsersServerModel['users'][number],

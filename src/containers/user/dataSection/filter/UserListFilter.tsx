@@ -22,6 +22,7 @@ const UserListFilter = () => {
 
   const { currentOption, changeOption } = useOptionSelector(
     USER_GROUP_FILTER_OPTIONS,
+    true,
   );
 
   const handleOptionSelect =
