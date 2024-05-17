@@ -17,10 +17,12 @@ const Pagination = ({
   maxPageCount = 5,
 }: PaginationProps) => {
   const {
-    currentPage,
-    pageNumbers,
+    hasPreviousPages,
+    hasNextPages,
     isPreviousButtonDisabled,
     isNextButtonDisabled,
+    currentPage,
+    pageNumbers,
     handlePreviousPageMove,
     handleNextPageMove,
     handleNumberClick,
@@ -36,6 +38,7 @@ const Pagination = ({
       >
         <CaretLeftIcon css={S.arrowIcon} />
       </S.ArrowButton>
+      {hasPreviousPages && <S.MorePageSignal>...</S.MorePageSignal>}
       <S.NumberWrapper>
         {pageNumbers.length ? (
           pageNumbers.map((number) => (
@@ -54,6 +57,7 @@ const Pagination = ({
           </S.NumberButton>
         )}
       </S.NumberWrapper>
+      {hasNextPages && <S.MorePageSignal>...</S.MorePageSignal>}
       <S.ArrowButton
         type="button"
         aria-label="move next page"

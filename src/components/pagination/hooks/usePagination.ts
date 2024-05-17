@@ -9,6 +9,10 @@ const usePagination = (maxPageCount: number, totalPages: number) => {
     searchParams.get('page') ? +searchParams.get('page')! : 1,
   );
 
+  const hasPreviousPages = pageNumbers[0] !== 1;
+  const hasNextPages =
+    pageNumbers.length === maxPageCount &&
+    totalPages > pageNumbers[maxPageCount - 1];
   const isPreviousButtonDisabled = currentPage - maxPageCount <= 0;
   const isNextButtonDisabled =
     Math.floor((currentPage + maxPageCount - 1) / maxPageCount) >
@@ -89,6 +93,8 @@ const usePagination = (maxPageCount: number, totalPages: number) => {
   }, [currentPage, maxPageCount, totalPages]);
 
   return {
+    hasPreviousPages,
+    hasNextPages,
     isPreviousButtonDisabled,
     isNextButtonDisabled,
     currentPage,

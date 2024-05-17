@@ -22,6 +22,15 @@ const mixinButton = css`
   border-radius: 8px;
 `;
 
+export const MorePageSignal = styled.div`
+  ${({ theme }) => css`
+    ${mixinButton};
+    ${theme.font.semibold_14};
+    color: ${theme.color.blue_500};
+    background-color: ${theme.color.blue_100};
+  `}
+`;
+
 export const ArrowButton = styled.button`
   ${({ theme }) => css`
     ${mixinButton};
