@@ -31,7 +31,7 @@ export const Label = styled.label<LabelProps>`
     &::after {
       content: '${isRequired ? '*' : ''}';
       margin-left: 2px;
-      color: ${theme.color.red_10};
+      color: ${theme.color.red_200};
     }
   `}
 `;

@@ -10,6 +10,6 @@ export default index;
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    color: ${theme.color.red_10};
+    color: ${theme.color.red_100};
   `}
 `;

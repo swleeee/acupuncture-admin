@@ -11,7 +11,8 @@ export const color = {
   gray_900: '#1D1F2C',
   blue_100: '#EBF1FF',
   blue_500: '#4F80FD',
-  red_10: '#EE7373',
+  red_100: '#EE7373',
+  red_200: '#F63D68',
 } as const;
 
 export type ColorType = typeof color;
