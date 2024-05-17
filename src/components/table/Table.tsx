@@ -15,6 +15,10 @@ interface TableProps<T> extends Props {
   headers: T;
 }
 
+interface TableBodyRowProps extends Props {
+  isSelected?: boolean;
+}
+
 interface TableDataProps extends Props {
   hasCheckbox?: boolean;
 }
@@ -59,8 +63,14 @@ const Table = <T extends object>({
 
 Table.Body = ({ children }: Props) => <tbody>{children}</tbody>;
 
-Table.BodyRow = ({ className, children }: Props) => (
-  <S.TableBodyRow className={className}>{children}</S.TableBodyRow>
+Table.BodyRow = ({
+  className,
+  children,
+  isSelected = false,
+}: TableBodyRowProps) => (
+  <S.TableBodyRow className={className} isSelected={isSelected}>
+    {children}
+  </S.TableBodyRow>
 );
 
 Table.Data = ({ className, children, hasCheckbox = false }: TableDataProps) => (

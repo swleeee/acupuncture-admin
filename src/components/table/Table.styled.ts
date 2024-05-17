@@ -48,9 +48,10 @@ export const TableHeadCell = styled.th<{ hasCheckbox: boolean }>`
   `}
 `;
 
-export const TableBodyRow = styled.tr`
-  ${({ theme }) => css`
+export const TableBodyRow = styled.tr<{ isSelected: boolean }>`
+  ${({ theme, isSelected }) => css`
     position: relative;
+    background-color: ${isSelected && theme.color.gray_50};
 
     &:not(:nth-of-type(10)) {
       border-bottom: 1px solid ${theme.color.gray_50};
