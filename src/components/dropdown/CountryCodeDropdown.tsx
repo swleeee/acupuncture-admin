@@ -7,6 +7,7 @@ import * as S from './Dropdown.styled';
 
 interface CountryCodeDropdownProps {
   className?: string;
+  hasError?: boolean;
   options: CountryCodeType[];
   placeholder?: string;
   selectedOption: CountryCodeType | null;
@@ -15,6 +16,7 @@ interface CountryCodeDropdownProps {
 
 const CountryCodeDropdown = ({
   className,
+  hasError,
   options,
   placeholder,
   selectedOption,
@@ -39,6 +41,7 @@ const CountryCodeDropdown = ({
     <S.Dropdown className={className} ref={dropdownRef}>
       <S.DropdownToggleButton
         type="button"
+        hasError={hasError}
         onClick={handleOpenStateChange(!isOpen)}
       >
         {selectedOption ? (

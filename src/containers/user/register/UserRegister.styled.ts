@@ -14,13 +14,6 @@ export const Outline = styled.div`
   margin-bottom: 25px;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  column-gap: 16px;
-  margin-bottom: 25px;
-`;
-
 export const Title = styled.h3`
   ${({ theme }) => css`
     ${theme.font.heavy_40};

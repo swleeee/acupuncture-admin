@@ -7,6 +7,7 @@ import * as S from './Dropdown.styled';
 
 interface DropdownProps<T extends ImmutableOptionsType> {
   className?: string;
+  hasError?: boolean;
   options: ReadonlyArray<SelectOptionType<T>>;
   placeholder?: string;
   selectedOption: SelectOptionType<T> | null;
@@ -15,6 +16,7 @@ interface DropdownProps<T extends ImmutableOptionsType> {
 
 const Dropdown = <T extends ImmutableOptionsType>({
   className,
+  hasError,
   options,
   placeholder,
   selectedOption,
@@ -39,6 +41,7 @@ const Dropdown = <T extends ImmutableOptionsType>({
     <S.Dropdown className={className} ref={dropdownRef}>
       <S.DropdownToggleButton
         type="button"
+        hasError={hasError}
         onClick={handleOpenStateChange(!isOpen)}
       >
         {selectedOption ? (

@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form';
 
-import { BIRTH_VIEW_OPTIONS, MONTH_OPTIONS, YEAR_OPTIONS } from '@/constants';
+import {
+  BIRTH_VIEW_OPTIONS,
+  ERROR_MESSAGE,
+  MONTH_OPTIONS,
+  YEAR_OPTIONS,
+} from '@/constants';
 import type {
   CountryCodeType,
   MutableOptionsType,
@@ -35,7 +40,15 @@ type Form = {
 };
 
 const useUserRegisterForm = () => {
-  const { watch, register, setValue } = useForm<Form>({
+  const {
+    formState: { errors },
+    watch,
+    register,
+    clearErrors,
+    setError,
+    setValue,
+    handleSubmit,
+  } = useForm<Form>({
     mode: 'onTouched',
     defaultValues: {
       name: '',
@@ -65,6 +78,20 @@ const useUserRegisterForm = () => {
     },
   });
 
+  const checkRequiredError = (data: Form) => {
+    let hasError = false;
+
+    if (!data.phone.code) {
+      setError('phone.code', {
+        type: 'required',
+        message: ERROR_MESSAGE.REQUIRED,
+      });
+      hasError = true;
+    }
+
+    return hasError;
+  };
+
   const handleDateOptionSelect =
     (key: 'birth.year' | 'birth.month') =>
     <T extends MutableOptionsType>(option: SelectOptionType<T>) => {
@@ -82,6 +109,7 @@ const useUserRegisterForm = () => {
   const handleCountryCodeSelect =
     (key: 'phone.code') => (option: CountryCodeType) => {
       setValue(key, option);
+      clearErrors(key);
     };
 
   const handleAddressSearch = (zipCode: string, address: string) => {
@@ -89,13 +117,26 @@ const useUserRegisterForm = () => {
     setValue('address.default', address);
   };
 
+  const handleUserCreate = handleSubmit(
+    (data) => {
+      const hasError = checkRequiredError(data);
+    },
+    () => {
+      checkRequiredError(watch());
+    },
+  );
+
+  console.log('errors : ', errors);
+
   return {
+    errors,
     watch,
     register,
     handleDateOptionSelect,
     handleBirthViewOptionSelect,
     handleCountryCodeSelect,
     handleAddressSearch,
+    handleUserCreate,
   };
 };
 

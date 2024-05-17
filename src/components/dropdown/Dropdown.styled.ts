@@ -5,13 +5,13 @@ export const Dropdown = styled.div`
   position: relative;
 `;
 
-export const DropdownToggleButton = styled.button`
-  ${({ theme }) => css`
+export const DropdownToggleButton = styled.button<{ hasError?: boolean }>`
+  ${({ theme, hasError }) => css`
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 8px;
-    border: 1px solid ${theme.color.gray_100};
+    border: 1px solid ${hasError ? theme.color.red_200 : theme.color.gray_100};
     border-radius: 8px;
     padding: 9px 11px;
     background-color: ${theme.color.gray_50};

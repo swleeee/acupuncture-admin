@@ -1,7 +1,14 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-export const Section = styled.section`
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 16px;
+  margin-bottom: 25px;
+`;
+
+export const FormContainer = styled.section`
   ${({ theme }) => css`
     border-radius: 8px;
     padding: 24px;
