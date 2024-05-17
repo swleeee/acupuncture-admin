@@ -35,3 +35,7 @@ export const Label = styled.label<LabelProps>`
     }
   `}
 `;
+
+export const message = css`
+  margin-top: 4px;
+`;

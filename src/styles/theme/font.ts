@@ -10,7 +10,7 @@ const LINE_HEIGHT = {
 
 export const font = {
   regular_12: css`
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 400;
     font-family: SUIT;
     line-height: ${LINE_HEIGHT[12]};
@@ -32,6 +32,12 @@ export const font = {
     font-weight: 500;
     font-family: SUIT;
     line-height: ${LINE_HEIGHT[14]};
+  `,
+  semibold_12: css`
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: SUIT;
+    line-height: ${LINE_HEIGHT[12]};
   `,
   semibold_14: css`
     font-size: 1.4rem;

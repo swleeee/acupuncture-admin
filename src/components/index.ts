@@ -1,6 +1,7 @@
 export * from './button';
 export * from './dropdown';
 export * from './input';
+export * from './message';
 export { default as Breadcrumbs } from './breadcrumbs/Breadcrumbs';
 export { default as Checkbox } from './checkbox/Checkbox';
 export { default as Footer } from './footer/Footer';
