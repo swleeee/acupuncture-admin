@@ -31,7 +31,7 @@ const UserRegisterForm = () => {
     <S.Section>
       <S.Title>기본정보 입력</S.Title>
       <div>
-        <LabelContent id="name" label="이름">
+        <LabelContent isRequired id="name" label="이름">
           <Input
             css={S.input(300)}
             placeholder="실명으로 입력해주세요."
@@ -41,7 +41,7 @@ const UserRegisterForm = () => {
             })}
           />
         </LabelContent>
-        <LabelContent id="id" label="회원아이디">
+        <LabelContent isRequired id="id" label="회원아이디">
           <S.IdWrapper>
             <Input
               css={S.input(300)}
@@ -59,7 +59,7 @@ const UserRegisterForm = () => {
             />
           </S.IdWrapper>
         </LabelContent>
-        <LabelContent id="password" label="비밀번호">
+        <LabelContent isRequired id="password" label="비밀번호">
           <Input
             css={S.input(300)}
             placeholder="6 ~ 16자 대소문자 영문 + 숫자 + 특수문자"
@@ -69,7 +69,7 @@ const UserRegisterForm = () => {
             })}
           />
         </LabelContent>
-        <LabelContent id="passwordConfirm" label="비밀번호 확인">
+        <LabelContent isRequired id="passwordConfirm" label="비밀번호 확인">
           <Input
             css={S.input(300)}
             placeholder="6 ~ 16자 대소문자 영문 + 숫자 + 특수문자"
@@ -114,7 +114,7 @@ const UserRegisterForm = () => {
             />
           </div>
         </LabelContent>
-        <LabelContent id="phone" label="전화번호">
+        <LabelContent isRequired id="phone" label="전화번호">
           <S.PhoneWrapper>
             <CountryCodeDropdown
               options={COUNTRY_CODE_OPTIONS}
@@ -150,7 +150,7 @@ const UserRegisterForm = () => {
             />
           </S.PhoneWrapper>
         </LabelContent>
-        <LabelContent id="address" label="주소">
+        <LabelContent isRequired id="address" label="주소">
           <S.AddressWrapper>
             <S.ZipCodeWrapper>
               <Input
