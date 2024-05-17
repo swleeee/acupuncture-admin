@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
   Button,
@@ -19,10 +20,12 @@ import {
   MONTH_OPTIONS,
   YEAR_OPTIONS,
 } from '@/constants';
-import useUserRegisterForm from './hooks/useUserRegisterForm';
-import * as S from './UserRegisterForm.styled';
+import useUserForm from './hooks/useUserForm';
+import * as S from './UserForm.styled';
 
-const UserRegisterForm = () => {
+const UserForm = () => {
+  const { id } = useParams();
+
   const {
     errors,
     watch,
@@ -32,7 +35,8 @@ const UserRegisterForm = () => {
     handleCountryCodeSelect,
     handleAddressSearch,
     handleUserCreate,
-  } = useUserRegisterForm();
+    handleUserUpdate,
+  } = useUserForm();
   const { handleAddressSearchPopupOpen } = usePostcode(handleAddressSearch);
 
   return (
@@ -47,10 +51,10 @@ const UserRegisterForm = () => {
         <Button
           isDisabled={!!Object.keys(errors).length}
           icon={<RegisterIcon />}
-          label="회원 등록"
+          label={id ? '회원 수정' : '회원 등록'}
           sizeType="sm"
           styleType="primaryBlue"
-          onClick={handleUserCreate}
+          onClick={id ? handleUserUpdate : handleUserCreate}
         />
       </S.ButtonWrapper>
       <S.FormContainer>
@@ -294,4 +298,4 @@ const UserRegisterForm = () => {
   );
 };
 
-export default UserRegisterForm;
+export default UserForm;

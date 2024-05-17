@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Checkbox, Table } from '@/components';
 import PencelIcon from '@/assets/icon/ic_pencil.svg?react';
 import TrashIcon from '@/assets/icon/ic_trash.svg?react';
-import { USER_TABLE_HEADER } from '@/constants';
+import { PATH, USER_TABLE_HEADER } from '@/constants';
 import type { GetUsersServerModel } from '@/types';
 import * as S from './UserListTable.styled';
 
@@ -20,7 +21,13 @@ const UserListTable = ({
   handleUserIdCheck,
   handleUserIdAllCheck,
 }: UserListTableProps) => {
-  const handleUserDelete = (id: string, name: string) => () => {
+  const navigate = useNavigate();
+
+  const handleEditButtonClick = (id: string) => () => {
+    navigate(`${PATH.userEdit}/${id}`);
+  };
+
+  const handleDeleteButtonClick = (id: string, name: string) => () => {
     if (confirm(`${name} 회원을 삭제하시겠습니까?`)) {
       alert(`${id} 삭제 완료!`);
     }
@@ -67,14 +74,14 @@ const UserListTable = ({
             <S.ControlButton
               type="button"
               aria-label="유저 정보 수정"
-              onClick={() => console.log('수정: ', item.id)}
+              onClick={handleEditButtonClick(item.id)}
             >
               <PencelIcon />
             </S.ControlButton>
             <S.ControlButton
               type="button"
               aria-label="유저 정보 삭제"
-              onClick={handleUserDelete(item.id, item.name)}
+              onClick={handleDeleteButtonClick(item.id, item.name)}
             >
               <TrashIcon />
             </S.ControlButton>

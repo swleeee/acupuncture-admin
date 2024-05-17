@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -39,7 +40,9 @@ type Form = {
   experience: string;
 };
 
-const useUserRegisterForm = () => {
+const useUserForm = () => {
+  const { id } = useParams();
+
   const {
     formState: { errors },
     watch,
@@ -120,13 +123,22 @@ const useUserRegisterForm = () => {
   const handleUserCreate = handleSubmit(
     (data) => {
       const hasError = checkRequiredError(data);
+      if (hasError) return;
     },
     () => {
       checkRequiredError(watch());
     },
   );
 
-  console.log('errors : ', errors);
+  const handleUserUpdate = handleSubmit(
+    (data) => {
+      const hasError = checkRequiredError(data);
+      if (hasError) return;
+    },
+    () => {
+      checkRequiredError(watch());
+    },
+  );
 
   return {
     errors,
@@ -137,7 +149,8 @@ const useUserRegisterForm = () => {
     handleCountryCodeSelect,
     handleAddressSearch,
     handleUserCreate,
+    handleUserUpdate,
   };
 };
 
-export default useUserRegisterForm;
+export default useUserForm;

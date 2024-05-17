@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Breadcrumbs } from '@/components';
 import { USER_REGISTER_BREADCRUMBS } from '@/constants';
-import UserRegisterForm from './form/UserRegisterForm';
+import UserForm from '../form/UserForm';
 import * as S from './UserRegister.styled';
 
 const UserRegister = () => {
@@ -14,7 +14,7 @@ const UserRegister = () => {
           <Breadcrumbs items={USER_REGISTER_BREADCRUMBS} />
         </div>
       </S.Outline>
-      <UserRegisterForm />
+      <UserForm />
     </S.UserRegister>
   );
 };
