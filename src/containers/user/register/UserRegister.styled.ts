@@ -16,7 +16,9 @@ export const Outline = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  justify-content: flex-end;
   column-gap: 16px;
+  margin-bottom: 25px;
 `;
 
 export const Title = styled.h3`

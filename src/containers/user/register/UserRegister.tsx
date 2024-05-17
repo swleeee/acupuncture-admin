@@ -15,21 +15,21 @@ const UserRegister = () => {
           <S.Title>회원 등록</S.Title>
           <Breadcrumbs items={USER_REGISTER_BREADCRUMBS} />
         </div>
-        <S.ButtonWrapper>
-          <Button
-            icon={<CancelIcon />}
-            label="취소"
-            sizeType="sm"
-            styleType="secondaryGray"
-          />
-          <Button
-            icon={<RegisterIcon />}
-            label="회원 등록"
-            sizeType="sm"
-            styleType="primaryBlue"
-          />
-        </S.ButtonWrapper>
       </S.Outline>
+      <S.ButtonWrapper>
+        <Button
+          icon={<CancelIcon />}
+          label="취소"
+          sizeType="sm"
+          styleType="secondaryGray"
+        />
+        <Button
+          icon={<RegisterIcon />}
+          label="회원 등록"
+          sizeType="sm"
+          styleType="primaryBlue"
+        />
+      </S.ButtonWrapper>
       <UserRegisterForm />
     </S.UserRegister>
   );

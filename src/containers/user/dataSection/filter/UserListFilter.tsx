@@ -1,12 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { SearchInput, SegmentButton } from '@/components';
+import { Button, SearchInput, SegmentButton } from '@/components';
 import { useOptionSelector } from '@/hooks';
 import { getAllQuery } from '@/utils';
+import DownloadIcon from '@/assets/icon/ic_download.svg?react';
+import PlusIcon from '@/assets/icon/ic_plus.svg?react';
+import CancelIcon from '@/assets/icon/ic_cross.svg?react';
 import { USER_GROUP_FILTER_OPTIONS } from '@/constants';
 import type { SelectOptionType } from '@/types';
 import * as S from './UserListFilter.styled';
+
+const ActionButtonGroup = () => {
+  return (
+    <S.ButtonWrapper>
+      <Button
+        icon={<CancelIcon css={S.cancelIcon} />}
+        label="회원 삭제"
+        sizeType="sm"
+        styleType="secondaryBlue"
+      />
+      <Button
+        icon={<DownloadIcon />}
+        label="엑셀 다운로드"
+        sizeType="sm"
+        styleType="secondaryBlue"
+      />
+      <Button
+        icon={<PlusIcon />}
+        label="회원 등록"
+        sizeType="sm"
+        styleType="primaryBlue"
+      />
+    </S.ButtonWrapper>
+  );
+};
 
 const UserListFilter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -47,17 +75,20 @@ const UserListFilter = () => {
   }, []);
 
   return (
-    <S.FilterWrapper>
+    <S.ControlWrapper>
       <SegmentButton
         options={USER_GROUP_FILTER_OPTIONS}
         selectedOption={currentOption}
         onClick={handleOptionSelect}
       />
-      <SearchInput
-        placeholder="이름, 아이디 검색"
-        onSearch={handleUserSearch}
-      />
-    </S.FilterWrapper>
+      <S.Wrapper>
+        <SearchInput
+          placeholder="이름, 아이디 검색"
+          onSearch={handleUserSearch}
+        />
+        <ActionButtonGroup />
+      </S.Wrapper>
+    </S.ControlWrapper>
   );
 };
 
