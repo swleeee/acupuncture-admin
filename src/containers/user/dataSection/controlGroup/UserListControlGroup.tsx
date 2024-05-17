@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Button, SearchInput, SegmentButton } from '@/components';
 import { useOptionSelector } from '@/hooks';
@@ -7,11 +7,17 @@ import { getAllQuery } from '@/utils';
 import DownloadIcon from '@/assets/icon/ic_download.svg?react';
 import PlusIcon from '@/assets/icon/ic_plus.svg?react';
 import CancelIcon from '@/assets/icon/ic_cross.svg?react';
-import { USER_GROUP_FILTER_OPTIONS } from '@/constants';
+import { PATH, USER_GROUP_FILTER_OPTIONS } from '@/constants';
 import type { SelectOptionType } from '@/types';
 import * as S from './UserListControlGroup.styled';
 
 const ActionButtonGroup = () => {
+  const navigate = useNavigate();
+
+  const handleRegisterNavigate = () => {
+    navigate(PATH.userRegister);
+  };
+
   return (
     <S.ButtonWrapper>
       <Button
@@ -31,6 +37,7 @@ const ActionButtonGroup = () => {
         label="회원 등록"
         sizeType="sm"
         styleType="primaryBlue"
+        onClick={handleRegisterNavigate}
       />
     </S.ButtonWrapper>
   );
