@@ -1,12 +1,12 @@
 import React from 'react';
 
-import UserListFilter from './filter/UserListFilter';
+import UserListControlGroup from './controlGroup/UserListControlGroup';
 import UserListTable from './table/UserListTable';
 
 const UserDataSection = () => {
   return (
     <>
-      <UserListFilter />
+      <UserListControlGroup />
       <UserListTable />
     </>
   );

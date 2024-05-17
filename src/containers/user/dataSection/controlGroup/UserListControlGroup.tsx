@@ -9,7 +9,7 @@ import PlusIcon from '@/assets/icon/ic_plus.svg?react';
 import CancelIcon from '@/assets/icon/ic_cross.svg?react';
 import { USER_GROUP_FILTER_OPTIONS } from '@/constants';
 import type { SelectOptionType } from '@/types';
-import * as S from './UserListFilter.styled';
+import * as S from './UserListControlGroup.styled';
 
 const ActionButtonGroup = () => {
   return (
@@ -36,7 +36,7 @@ const ActionButtonGroup = () => {
   );
 };
 
-const UserListFilter = () => {
+const UserListControlGroup = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [, setSearchValue] = useState('');
@@ -92,4 +92,4 @@ const UserListFilter = () => {
   );
 };
 
-export default UserListFilter;
+export default UserListControlGroup;
