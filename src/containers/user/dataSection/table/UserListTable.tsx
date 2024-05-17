@@ -104,7 +104,6 @@ const UserListTable = ({
               >
                 {Object.keys(USER_TABLE_HEADER).map((key, i) => (
                   <Table.Data key={key} hasCheckbox={i === 0}>
-                    {i === 0 && <Table.RowButton onClick={() => {}} />}
                     {i === 0 && (
                       <Checkbox
                         isChecked={checkedIds.includes(user.id)}
