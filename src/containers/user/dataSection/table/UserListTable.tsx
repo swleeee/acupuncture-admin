@@ -66,6 +66,12 @@ const UserListTable = () => {
     setCheckIds([]);
   };
 
+  const handleUserDelete = (id: string, name: string) => () => {
+    if (confirm(`${name} 회원을 삭제하시겠습니까?`)) {
+      alert(`${id} 삭제 완료!`);
+    }
+  };
+
   const formatData = (
     item: GetUsersServerModel['users'][number],
     key: keyof typeof USER_TABLE_HEADER,
@@ -114,7 +120,7 @@ const UserListTable = () => {
             <S.ControlButton
               type="button"
               aria-label="유저 정보 삭제"
-              onClick={() => console.log('삭제: ', item.id)}
+              onClick={handleUserDelete(item.id, item.name)}
             >
               <TrashIcon />
             </S.ControlButton>
