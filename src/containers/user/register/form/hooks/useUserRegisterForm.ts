@@ -84,12 +84,18 @@ const useUserRegisterForm = () => {
       setValue(key, option);
     };
 
+  const handleAddressSearch = (zipCode: string, address: string) => {
+    setValue('address.zipCode', zipCode);
+    setValue('address.default', address);
+  };
+
   return {
     watch,
     register,
     handleDateOptionSelect,
     handleBirthViewOptionSelect,
     handleCountryCodeSelect,
+    handleAddressSearch,
   };
 };
 

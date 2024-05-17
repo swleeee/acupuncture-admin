@@ -10,6 +10,7 @@ import {
   RadioButton,
   Textarea,
 } from '@/components';
+import { usePostcode } from '@/hooks';
 import {
   BIRTH_VIEW_OPTIONS,
   COUNTRY_CODE_OPTIONS,
@@ -25,7 +26,9 @@ const UserRegisterForm = () => {
     handleDateOptionSelect,
     handleBirthViewOptionSelect,
     handleCountryCodeSelect,
+    handleAddressSearch,
   } = useUserRegisterForm();
+  const { handleAddressSearchPopupOpen } = usePostcode(handleAddressSearch);
 
   return (
     <S.Section>
@@ -165,7 +168,7 @@ const UserRegisterForm = () => {
                 label="우편번호 찾기"
                 sizeType="sm"
                 styleType="primaryBlue"
-                onClick={() => {}} // TODO: 추후 작성 예정
+                onClick={handleAddressSearchPopupOpen}
               />
             </S.ZipCodeWrapper>
             <Input
