@@ -13,7 +13,6 @@ import {
 import {
   BIRTH_VIEW_OPTIONS,
   COUNTRY_CODE_OPTIONS,
-  DAY_OPTIONS,
   MONTH_OPTIONS,
   YEAR_OPTIONS,
 } from '@/constants';
@@ -86,22 +85,25 @@ const UserRegisterForm = () => {
               <Dropdown
                 options={YEAR_OPTIONS}
                 selectedOption={watch('birth.year')}
-                placeholder="1960"
+                placeholder="0000"
                 onSelect={handleDateOptionSelect('birth.year')}
               />
               <span>년</span>
               <Dropdown
                 options={MONTH_OPTIONS}
                 selectedOption={watch('birth.month')}
-                placeholder="12"
+                placeholder="00"
                 onSelect={handleDateOptionSelect('birth.month')}
               />
               <span>월</span>
-              <Dropdown
-                options={DAY_OPTIONS}
-                selectedOption={watch('birth.day')}
-                placeholder="22"
-                onSelect={handleDateOptionSelect('birth.day')}
+              <Input
+                css={S.input(41)}
+                placeholder="00"
+                value={watch('birth.day')}
+                register={register('birth.day', {
+                  required: true,
+                  maxLength: 2,
+                })}
               />
               <span>일</span>
             </S.DaySelectWrapper>

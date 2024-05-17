@@ -1,11 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import {
-  BIRTH_VIEW_OPTIONS,
-  DAY_OPTIONS,
-  MONTH_OPTIONS,
-  YEAR_OPTIONS,
-} from '@/constants';
+import { BIRTH_VIEW_OPTIONS, MONTH_OPTIONS, YEAR_OPTIONS } from '@/constants';
 import type {
   CountryCodeType,
   MutableOptionsType,
@@ -20,7 +15,7 @@ type Form = {
   birth: {
     year: SelectOptionType<typeof YEAR_OPTIONS> | null;
     month: SelectOptionType<typeof MONTH_OPTIONS> | null;
-    day: SelectOptionType<typeof DAY_OPTIONS> | null;
+    day: string;
     viewType: SelectOptionType<typeof BIRTH_VIEW_OPTIONS>;
   };
   phone: {
@@ -50,7 +45,7 @@ const useUserRegisterForm = () => {
       birth: {
         year: null,
         month: null,
-        day: null,
+        day: '',
         viewType: BIRTH_VIEW_OPTIONS[0],
       },
       phone: {
@@ -71,9 +66,10 @@ const useUserRegisterForm = () => {
   });
 
   const handleDateOptionSelect =
-    (key: 'birth.year' | 'birth.month' | 'birth.day') =>
+    (key: 'birth.year' | 'birth.month') =>
     <T extends MutableOptionsType>(option: SelectOptionType<T>) => {
       setValue(key, option);
+      setValue('birth.day', '');
     };
 
   const handleBirthViewOptionSelect =

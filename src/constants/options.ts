@@ -15,8 +15,6 @@ export const YEAR_OPTIONS = generateDescendingOptionsFromRange(
 
 export const MONTH_OPTIONS = generateDescendingOptionsFromRange(1, 12);
 
-export const DAY_OPTIONS = generateDescendingOptionsFromRange(1, 31);
-
 export const BIRTH_VIEW_OPTIONS = [
   { key: 'lunar', label: '음력' },
   { key: 'solar', label: '양력' },
