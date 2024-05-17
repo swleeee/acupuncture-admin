@@ -1,71 +1,25 @@
 import React, { useState } from 'react';
 
 import { Checkbox, Table } from '@/components';
-import EyeIcon from '@/assets/icon/ic_eye.svg?react';
 import PencelIcon from '@/assets/icon/ic_pencil.svg?react';
 import TrashIcon from '@/assets/icon/ic_trash.svg?react';
 import { USER_TABLE_HEADER } from '@/constants';
 import type { GetUsersServerModel } from '@/types';
 import * as S from './UserListTable.styled';
 
-const userData: GetUsersServerModel = {
-  users: [
-    {
-      profile: null,
-      name: '이용주',
-      birth: '1993-04-01',
-      id: 'qwer1234',
-      createdDate: '2024-04-27',
-      location: '서울특별시 종로구',
-      group: '미지정 그룹',
-      job: '무직',
-      recommender: null,
-    },
-    {
-      profile: null,
-      name: '김나박이',
-      birth: '1963-04-01',
-      id: 'kse302011',
-      createdDate: '2024-04-27',
-      location: '전북특별자치도 군산시',
-      group: '이침 지도자',
-      job: '카페사장',
-      recommender: '이용주',
-    },
-    {
-      profile: null,
-      name: '정서에스더',
-      birth: '1963-12-01',
-      id: 'pbrrio',
-      createdDate: '2024-04-27',
-      location: '세종특별자치시',
-      group: '이침 전문가',
-      job: '주부',
-      recommender: '김종관회장님',
-    },
-  ],
-};
+interface UserListTableProps {
+  checkedIds: string[];
+  userData: GetUsersServerModel;
+  handleUserIdCheck: (id: string, isChecked: boolean) => void;
+  handleUserIdAllCheck: () => void;
+}
 
-const UserListTable = () => {
-  const [checkedIds, setCheckIds] = useState<string[]>([]);
-
-  const handleUserIdCheck = (id: string, isChecked: boolean) => {
-    if (!isChecked) {
-      setCheckIds([...checkedIds, id]);
-      return;
-    }
-    setCheckIds([...checkedIds].filter((checkId) => checkId !== id));
-  };
-
-  const handleUserIdAllCheck = () => {
-    if (!checkedIds.length) {
-      setCheckIds(userData.users.map((user) => user.id));
-      return;
-    }
-
-    setCheckIds([]);
-  };
-
+const UserListTable = ({
+  checkedIds,
+  userData,
+  handleUserIdCheck,
+  handleUserIdAllCheck,
+}: UserListTableProps) => {
   const handleUserDelete = (id: string, name: string) => () => {
     if (confirm(`${name} 회원을 삭제하시겠습니까?`)) {
       alert(`${id} 삭제 완료!`);
