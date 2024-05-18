@@ -12,6 +12,7 @@ import type {
   MutableOptionsType,
   SelectOptionType,
 } from '@/types';
+import { useEffect } from 'react';
 
 type Form = {
   name: string;
@@ -43,6 +44,33 @@ type Form = {
 const useUserForm = () => {
   const { id } = useParams();
 
+  const FORM_INIT_VALUE = {
+    name: '',
+    id: '',
+    password: '',
+    passwordConfirm: '',
+    birth: {
+      year: null,
+      month: null,
+      day: '',
+      viewType: BIRTH_VIEW_OPTIONS[0],
+    },
+    phone: {
+      code: null,
+      first: '',
+      middle: '',
+      last: '',
+    },
+    address: {
+      zipCode: '',
+      default: '',
+      detail: '',
+    },
+    job: '',
+    recommender: '',
+    experience: '',
+  };
+
   const {
     formState: { errors },
     watch,
@@ -50,35 +78,11 @@ const useUserForm = () => {
     clearErrors,
     setError,
     setValue,
+    reset,
     handleSubmit,
   } = useForm<Form>({
     mode: 'onTouched',
-    defaultValues: {
-      name: '',
-      id: '',
-      password: '',
-      passwordConfirm: '',
-      birth: {
-        year: null,
-        month: null,
-        day: '',
-        viewType: BIRTH_VIEW_OPTIONS[0],
-      },
-      phone: {
-        code: null,
-        first: '',
-        middle: '',
-        last: '',
-      },
-      address: {
-        zipCode: '',
-        default: '',
-        detail: '',
-      },
-      job: '',
-      recommender: '',
-      experience: '',
-    },
+    defaultValues: FORM_INIT_VALUE,
   });
 
   const checkRequiredError = (data: Form) => {
@@ -139,6 +143,28 @@ const useUserForm = () => {
       checkRequiredError(watch());
     },
   );
+
+  useEffect(() => {
+    // TODO: 추후 API 연동 시 로직 수정 필요
+    if (!id) return;
+
+    reset({
+      ...FORM_INIT_VALUE,
+      name: '이상원',
+      id: 'test001',
+      phone: {
+        code: { code: 'KOR', dial: '82' },
+        first: '010',
+        middle: '1111',
+        last: '2222,',
+      },
+      address: {
+        zipCode: '01404',
+        default: '서울 성북구',
+        detail: '1층',
+      },
+    });
+  }, []);
 
   return {
     errors,
